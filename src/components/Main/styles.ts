@@ -9,6 +9,8 @@ export const MainContainer = styled('main', {
 })
 
 export const FormContainer = styled('form', {
+  display: 'flex',
+  alignItems: 'center',
   mt: '-2rem'
 })
 
@@ -28,6 +30,8 @@ export const InputText = styled('input', {
 })
 
 export const Button = styled('button', {
+  display: 'flex',
+  justifyContent: 'space-evenly',
   height: '4.5rem',
   width: '7rem',
   ml: '.3rem',
@@ -41,7 +45,12 @@ export const Button = styled('button', {
 
   '&:hover': {
     backgroundColor: "$blue"
+  },
+
+  '& .PlusCicle': {
+    fontSize: '2rem',
   }
+
 })
 
 export const Container = styled('div', {
@@ -107,15 +116,27 @@ export const TaskSection = styled('section', {
 })
 
 export const AlertSection = styled('div', {
+  display: 'flex',
   width: '100%',
-  display: 'none',
   flexDirection: 'column',
   alignItems: 'center',
   color: '$grayThree',
   fontSize: '2rem',
   lineHeight: '140%',
 
+  variants: {
+    hasTask: {
+      true: {
+        display: 'none'
+      },
+      false: {
+        display: 'flex'
+      },
+    },
+  },
+
   '& img': {
-    margin: '1.5rem 0'
+    margin: '1.5rem 0',
   }
+  
 })

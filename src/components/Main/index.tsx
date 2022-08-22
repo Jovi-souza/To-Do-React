@@ -1,4 +1,7 @@
 import { PlusCircle } from "phosphor-react";
+import { useState ,FormEvent, ChangeEvent } from "react";
+import { Task } from "../Task";
+
 import { 
   AboutTheTasks, 
   Button, 
@@ -11,10 +14,8 @@ import {
   Span, 
   AlertSection
 } from "./styles";
-
 import Clipboard from '../../images/Clipboard.png'
-import { Task } from "../Task";
-import { useState ,FormEvent , ChangeEvent } from "react";
+
 
 export function Main() {
   const [Tasks, setTasks] = useState<string[]>([])
@@ -25,39 +26,44 @@ export function Main() {
     event.preventDefault()
     
     setTasks([...Tasks, NewTask])
-
     setNewTask('')
   }
 
-  function handleNewTaskChange(event: ChangeEvent<HTMLFormElement>) {
-    event.target.setCustomValidity('') 
+  function handleNewTaskChange(event: ChangeEvent<HTMLInputElement>) {
+    event.target.setCustomValidity('')
+
     setNewTask(event.target.value)
   }
 
-  function deleteComment(TaskToDelete: string) {
-    const TasksWithoutDeleteOne = Tasks.filter(Task => {
-        return Task !== TaskToDelete
+  function handleDeleteTask( taskToDelet: string) {
+
+    const taskWithoutDeleteOne = Tasks.filter( task => {
+      return task !== taskToDelet
     })
 
-    setTasks(TasksWithoutDeleteOne)
-}
+    setTasks(taskWithoutDeleteOne)
+  }
+
+  let numberOfTasks = Tasks.length
 
   return(
     <MainContainer>
-      <FormContainer onSubmit={handleCreateNewTask} onChange={handleNewTaskChange}>
+      <FormContainer onSubmit={handleCreateNewTask}>
         <InputText 
           placeholder="Adicione uma nova tarefa" 
           type="text"
+          value={NewTask}
+          onChange={handleNewTaskChange}
           maxLength={50}
           required
         />
-        <Button type="submit">Criar<PlusCircle/></Button>
+        <Button type="submit">Criar <PlusCircle className="PlusCicle"/> </Button>
       </FormContainer>
 
       <Container>
         <AboutTheTasks>
-          <Paragraph color={'blue'} >Tarefas criadas <Span >0</Span></Paragraph>
-          <Paragraph color={"purple"} >Concluídas <Span >0</Span></Paragraph>
+              <Paragraph color={"blue"} >Tarefas criadas <Span >{ numberOfTasks }</Span></Paragraph>
+          <Paragraph color={"purple"} >Concluídas <Span > 0 de {numberOfTasks} </Span></Paragraph>
         </AboutTheTasks>
         <TaskSection>
 
@@ -65,18 +71,20 @@ export function Main() {
             return (
               <Task
                 content={task}
-                onDeleteTask={deleteComment}
+                onDeleteTask={handleDeleteTask}
+                key={task}
               />
             )
           })}
-
-          <AlertSection>
-            <img src={Clipboard} />
-            <Paragraph display={'block'} width={"text"}>
-              <strong>Você ainda não tem tarefas cadastradas</strong> Crie tarefas e organize seus itens a fazer
-            </Paragraph>
-          </AlertSection>
         </TaskSection>
+
+        <AlertSection hasTask={ numberOfTasks ? 'true' : 'false'}>
+          <img src={Clipboard} />
+          <Paragraph display={'block'} width={"text"}>
+            <strong>Você ainda não tem tarefas cadastradas</strong> Crie tarefas e organize seus itens a fazer
+          </Paragraph>
+
+        </AlertSection>
       </Container>
     </MainContainer>
   )
