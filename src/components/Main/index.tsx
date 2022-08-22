@@ -19,12 +19,12 @@ import Clipboard from '../../images/Clipboard.png'
 
 export function Main() {
   const [Tasks, setTasks] = useState<string[]>([])
-
+  
   const [NewTask, setNewTask] = useState('')
 
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault()
-    
+
     setTasks([...Tasks, NewTask])
     setNewTask('')
   }
@@ -45,6 +45,10 @@ export function Main() {
   }
 
   let numberOfTasks = Tasks.length
+
+  const verificar = Tasks.map( task => {
+    return task
+  })
 
   return(
     <MainContainer>
@@ -68,13 +72,14 @@ export function Main() {
         <TaskSection>
 
           { Tasks.map( task => {
-            return (
-              <Task
-                content={task}
-                onDeleteTask={handleDeleteTask}
-                key={task}
-              />
-            )
+              return (
+                <Task
+                  content={task}
+                  onDeleteTask={handleDeleteTask}
+                  key={task}
+                  id={task}
+                />
+              )
           })}
         </TaskSection>
 

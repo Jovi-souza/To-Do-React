@@ -40,7 +40,7 @@ export const Container = styled('div', {
 
   '& input:checked + label:hover:before': {
     backgroundColor: '$Purple',
-    borderColor: '$Purple'
+    borderColor: '$Purple',
   },
 })
 
