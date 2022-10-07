@@ -21,10 +21,10 @@
 </p>
 <p align="justify">
   Nesse projeto nós colocamos em prática conceitos como:<br>
-  - useState
-  - componentização
-  - typescript
-  - stitches
+  - useState <br>
+  - componentização <br>
+  - typescript <br>
+  - stitches <br>
 </p>
 
 ## Funcionalidades
