@@ -37,6 +37,4 @@
 
 ## Layout :dash:
 
-
-
-... 
+<img src="https://user-images.githubusercontent.com/102324315/194549772-02684551-74e6-471f-82c2-17c220092b94.svg" />
