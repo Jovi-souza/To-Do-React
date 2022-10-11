@@ -43,12 +43,8 @@ export function Main() {
 
     setTasks(taskWithoutDeleteOne)
   }
-
   let numberOfTasks = Tasks.length
-
-  const verificar = Tasks.map( task => {
-    return task
-  })
+  const hasTask = numberOfTasks ? 'true' : 'false'
 
   return(
     <MainContainer>
@@ -66,29 +62,25 @@ export function Main() {
 
       <Container>
         <AboutTheTasks>
-              <Paragraph color={"blue"} >Tarefas criadas <Span >{ numberOfTasks }</Span></Paragraph>
+          <Paragraph color={"blue"} >Tarefas criadas <Span >{ numberOfTasks }</Span></Paragraph>
           <Paragraph color={"purple"} >Concluídas <Span > 0 de {numberOfTasks} </Span></Paragraph>
         </AboutTheTasks>
         <TaskSection>
-
           { Tasks.map( task => {
               return (
                 <Task
                   content={task}
                   onDeleteTask={handleDeleteTask}
                   key={task}
-                  id={task}
                 />
               )
           })}
         </TaskSection>
-
-        <AlertSection hasTask={ numberOfTasks ? 'true' : 'false'}>
+        <AlertSection hasTask={ hasTask }>
           <img src={Clipboard} />
           <Paragraph display={'block'} width={"text"}>
             <strong>Você ainda não tem tarefas cadastradas</strong> Crie tarefas e organize seus itens a fazer
           </Paragraph>
-
         </AlertSection>
       </Container>
     </MainContainer>

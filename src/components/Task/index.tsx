@@ -1,13 +1,12 @@
 import { Trash } from "phosphor-react";
-import { Container, TaskName } from "./styles";
+import { Container, RadioItem, RadioRoot, TaskName } from "./styles";
 
 interface TaskProps {
-  id: string
   content: string
   onDeleteTask: ( task: string ) => void
 }
 
-export function Task({ id, content, onDeleteTask}:TaskProps ) {
+export function Task({ content, onDeleteTask}:TaskProps ) {
 
   function handleDeleteComent() {
     onDeleteTask( content )
@@ -15,11 +14,9 @@ export function Task({ id, content, onDeleteTask}:TaskProps ) {
 
   return(
     <Container>
-      <input 
-        id={id}
-        type="checkbox"
-      />
-      <label htmlFor={id}></label>
+      <RadioRoot>
+        <RadioItem value="item-1" />
+      </RadioRoot>
       <TaskName className="TaskName" >{ content }</TaskName>
       <Trash cursor='pointer' onClick={ handleDeleteComent }/>
     </Container>
