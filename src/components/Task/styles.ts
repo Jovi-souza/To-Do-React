@@ -1,4 +1,5 @@
-import * as RadioGroup from '@radix-ui/react-radio-group';
+import * as checkbox from '@radix-ui/react-checkbox';
+import { Trash } from "phosphor-react";
 import { styled } from '../../styles/stitches.config';
 
 export const Container = styled('form', {
@@ -16,29 +17,50 @@ export const Container = styled('form', {
   borderRadius: '5px',
 })
 
+export const TrashIcon = styled(Trash, {
+  transition: '.2s',
+  "&:hover": {
+    color: '$danger',
+  }
+})
+
 export const TaskName = styled('p', {
   fontSize: '1.33rem',
   color: '$grayOne',
+
+  variants: {
+    isChecked: {
+      checked: {
+        textDecoration: "initial"
+      },
+      unchecked: {
+        textDecoration: "line-through",
+        color: "$grayThree"
+      },
+    }
+  }
 })
 
-export const RadioRoot = styled(RadioGroup.Root, {
-  width: 'max-content',
-  height: 'max-content',
-})
-
-export const RadioItem = styled(RadioGroup.Item, {
-  width: '1.75rem',
-  height: '1.75rem',
+export const CheckRoot = styled(checkbox.Root, {
+  display: 'flex',
+  alignItems: "center",
+  justifyContent: 'center',
+  width: '2rem',
+  height: '2rem',
+  borderRadius: '50%',
   backgroundColor: "$grayFour",
-
   border: "2px solid $blue",
-  borderRadius: "50%",
-
+  
   "&[data-state='checked']": {
     backgroundColor: "$PurpleDark",
+    border: "2px solid $PurpleDark",
   },
 
   "&[data-state='unchecked']": {
     backgroundColor: "$grayFour",
   }
+})
+
+export const CheckIndicator = styled(checkbox.Indicator, {
+  mt: ".30rem"
 })

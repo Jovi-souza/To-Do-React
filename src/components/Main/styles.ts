@@ -11,13 +11,14 @@ export const MainContainer = styled('main', {
 export const FormContainer = styled('form', {
   display: 'flex',
   alignItems: 'center',
-  mt: '-2rem'
+  mt: '-2rem',
+  width: '45vw',
 })
 
 export const InputText = styled('input', {
   backgroundColor: '$grayFive',
   color: '$grayOne',
-  width: '40vw',
+  width: '100%',
   height: '4.5rem',
   border: '1px solid transparent',
   padding: '$1',
@@ -33,7 +34,7 @@ export const Button = styled('button', {
   display: 'flex',
   justifyContent: 'space-evenly',
   height: '4.5rem',
-  width: '7rem',
+  width: '8rem',
   ml: '.3rem',
   backgroundColor: '$blueDark',
   color: '$grayOne',

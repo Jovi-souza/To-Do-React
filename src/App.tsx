@@ -1,13 +1,14 @@
 import { Header } from "./components/Header";
 import { Main } from "./components/Main";
+import { CheckContextProvider } from "./context/checkedContext";
 import { GlobalCss } from "./styles/GlobalStyles";
 
 export default function App() {
   return (
-    <div>
+    <CheckContextProvider>
       <Header />
       <Main />
       {GlobalCss()}
-    </div>
+    </CheckContextProvider>
   )
 }

@@ -16,7 +16,6 @@ import {
 } from "./styles";
 import Clipboard from '../../images/Clipboard.png'
 
-
 export function Main() {
   const [Tasks, setTasks] = useState<string[]>([])
   
@@ -43,6 +42,7 @@ export function Main() {
 
     setTasks(taskWithoutDeleteOne)
   }
+
   let numberOfTasks = Tasks.length
   const hasTask = numberOfTasks ? 'true' : 'false'
 
@@ -66,7 +66,7 @@ export function Main() {
           <Paragraph color={"purple"} >Concluídas <Span > 0 de {numberOfTasks} </Span></Paragraph>
         </AboutTheTasks>
         <TaskSection>
-          { Tasks.map( task => {
+          {Tasks.map( task => {
               return (
                 <Task
                   content={task}
