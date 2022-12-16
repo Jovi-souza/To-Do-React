@@ -1,10 +1,9 @@
-import Logo from "../../images/Logo.svg"
-import { HeaderContainer, Img } from "./styles"
+import Logo from '../../images/Logo.svg'
 
 export function Header() {
-  return(
-    <HeaderContainer>
-      <Img src={Logo} alt="Logo" />
-    </HeaderContainer>
+  return (
+    <div className="flex justify-center py-16 bg-graySeven w-full">
+      <img src={Logo} alt="Logo" />
+    </div>
   )
 }

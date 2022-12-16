@@ -1,14 +1,14 @@
-import { Header } from "./components/Header";
-import { Main } from "./components/Main";
-import { CheckContextProvider } from "./context/checkedContext";
-import { GlobalCss } from "./styles/GlobalStyles";
-
+import { Header } from './components/Header'
+import { Main } from './components/Main'
+import { CheckContextProvider } from './context/checkedContext'
+import '../src/styles/index.css'
 export default function App() {
   return (
     <CheckContextProvider>
-      <Header />
-      <Main />
-      {GlobalCss()}
+      <div className="flex flex-col justify-center items-center">
+        <Header />
+        <Main />
+      </div>
     </CheckContextProvider>
   )
 }
